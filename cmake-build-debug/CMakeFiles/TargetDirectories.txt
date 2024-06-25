@@ -1,0 +1,3 @@
+C:/Users/HARMAN/CLionProjects/Company_Visitors_Management_System/cmake-build-debug/CMakeFiles/Company_Visitors_Management_System.dir
+C:/Users/HARMAN/CLionProjects/Company_Visitors_Management_System/cmake-build-debug/CMakeFiles/edit_cache.dir
+C:/Users/HARMAN/CLionProjects/Company_Visitors_Management_System/cmake-build-debug/CMakeFiles/rebuild_cache.dir
