@@ -1,23 +1,18 @@
 #include <iostream>
 #include <string>
 #include <vector>
-
 using namespace std;
 
 class Visitor {
+    string name, id, checkInTime, checkOutTime;
 public:
     Visitor(string name, string id) : name(name), id(id), checkInTime(""), checkOutTime("") {}
-
     string getName() const { return name; }
     string getId() const { return id; }
     string getCheckInTime() const { return checkInTime; }
     string getCheckOutTime() const { return checkOutTime; }
-
     void checkIn(string time) { checkInTime = time; }
     void checkOut(string time) { checkOutTime = time; }
-
-private:
-    string name, id, checkInTime, checkOutTime;
 };
 
 class VisitorManagementSystem {
@@ -27,7 +22,6 @@ public:
             displayMenu();
             int choice;
             cin >> choice;
-
             switch (choice) {
                 case 1: registerVisitor(); break;
                 case 2: checkInVisitor(); break;
@@ -38,10 +32,8 @@ public:
             }
         }
     }
-
 private:
     vector<Visitor> visitors;
-
     void displayMenu() {
         cout << "\nVisitor Management System\n"
              << "1. Register Visitor\n"
@@ -56,11 +48,16 @@ private:
         string name, id;
         cout << "Enter visitor name: ";
         cin >> name;
+        cin.ignore();
         cout << "Enter visitor ID: ";
         cin >> id;
 
-        visitors.push_back(Visitor(name, id));
-        cout << "Visitor registered successfully.\n";
+        if (findVisitor(id) != nullptr) {
+            cout << "Visitor with ID " << id << " is already registered.\n";
+        } else {
+            visitors.push_back(Visitor(name, id));
+            cout << "Visitor registered successfully.\n";
+        }
     }
 
     Visitor* findVisitor(const string& id) {
@@ -76,8 +73,14 @@ private:
         string id, time;
         cout << "Enter visitor ID: ";
         cin >> id;
+
         cout << "Enter check-in time (HH:MM): ";
         cin >> time;
+
+        if (!isValidTimeFormat(time)) {
+            cout << "Invalid time format. Please enter in HH:MM format.\n";
+            return;
+        }
 
         Visitor* visitor = findVisitor(id);
         if (visitor) {
@@ -92,8 +95,14 @@ private:
         string id, time;
         cout << "Enter visitor ID: ";
         cin >> id;
+
         cout << "Enter check-out time (HH:MM): ";
         cin >> time;
+
+        if (!isValidTimeFormat(time)) {
+            cout << "Invalid time format. Please enter in HH:MM format.\n";
+            return;
+        }
 
         Visitor* visitor = findVisitor(id);
         if (visitor) {
@@ -109,7 +118,6 @@ private:
             cout << "No visitors registered.\n";
             return;
         }
-
         cout << "\nVisitor List:\n";
         for (const auto& visitor : visitors) {
             cout << "Name: " << visitor.getName() << ", ID: " << visitor.getId() << "\n";
@@ -120,6 +128,25 @@ private:
                 cout << "  Check-out time: " << visitor.getCheckOutTime() << "\n";
             }
         }
+    }
+
+    bool isValidTimeFormat(const string& time) {
+        if (time.size() != 5) {
+            return false;
+        }
+
+        if (time[2] != ':') {
+            return false;
+        }
+
+        int hour = stoi(time.substr(0, 2));
+        int minute = stoi(time.substr(3, 2));
+
+        if (hour < 0 || hour > 23 || minute < 0 || minute > 59) {
+            return false;
+        }
+
+        return true;
     }
 };
 
