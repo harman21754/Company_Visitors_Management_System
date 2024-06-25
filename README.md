@@ -15,10 +15,10 @@ This is a simple Command Line Interface (CLI) based Company Visitors Management 
 
 ## Compilation
 To compile the program, use the following command in your terminal:
-g++ -std=c++11 visitor_management.cpp -o visitor_management
+g++ -std=c++11 main.cpp -o main
 ## Usage
 After compilation, run the program using:
-./visitor_management
+./main
 Follow the on-screen menu to interact with the system:
 
 1. Register Visitor
