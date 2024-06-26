@@ -39,9 +39,6 @@ The program uses a vector to store visitor information in memory. Note that this
 
 ## Future Enhancements
 - Implement persistent data storage (e.g., file I/O or database integration)
-- Add more robust error handling and input validation
-- Implement a more sophisticated time management system
-- Add reporting and analytics features
 
 ## Contributing
 Contributions to improve the system are welcome. Please feel free to fork the repository and submit pull requests.
