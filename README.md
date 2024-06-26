@@ -36,8 +36,6 @@ The program uses a vector to store visitor information in memory. Note that this
 
 ## Limitations
 - The system does not include persistent data storage.
-- There's no advanced error handling or input validation.
-- The time format is simple string input and does not perform time calculations or validations.
 
 ## Future Enhancements
 - Implement persistent data storage (e.g., file I/O or database integration)
