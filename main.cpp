@@ -47,10 +47,10 @@ private:
     void registerVisitor() {
         string name, id;
         cout << "Enter visitor name: ";
-        cin >> name;
         cin.ignore();
+        getline(cin,name);
         cout << "Enter visitor ID: ";
-        cin >> id;
+        getline(cin,id);
 
         if (findVisitor(id) != nullptr) {
             cout << "Visitor with ID " << id << " is already registered.\n";
